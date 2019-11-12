@@ -1,26 +1,63 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import CardList from './components/card-list/card-list.component'
+import SearchBox from './components/search-box/search-box.component'
+import nextId, { setPrefix } from "react-id-generator";
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      characters: [],
+      searchField: ''
+    };
+  }
+
+  componentDidMount() {
+    fetch("https://uinames.com/api/?region=india&amount=40&ext")
+      .then(response => response.json())
+      .then(users => {
+        // add unique id to imported users
+        setPrefix("");
+        users = users.map(user => {
+          user.id = nextId();
+          user.name += " " + user.surname;
+          return user;
+        });
+        // store users as characters in state
+        this.setState({ characters: users });
+      });
+  }
+
+  handleChange = (e) => {
+    this.setState({ searchField: e.target.value });
+  }
+
+  render() {
+    // filter items by string in search box
+    const {characters, searchField} = this.state;
+    const filteredCharacters = characters.filter(character => 
+      character.name.toLowerCase().includes(searchField.toLowerCase())
+    );
+    if(filteredCharacters.length === 0) {
+      filteredCharacters[1] = {
+        name: searchField,
+        email: searchField.toLowerCase().replace(" ", "") + "@example.com",
+        id: 0,
+      }
+    }
+
+    return (
+      <div className="App">
+        <h1>Cat Search</h1>
+        <SearchBox handleChange={this.handleChange} placeholder="Search your cat" />
+        <CardList characters={filteredCharacters} />
+        <p className="footer">Created by Pawan Kolhe</p>
+      </div>
+    );
+  }
 }
 
 export default App;

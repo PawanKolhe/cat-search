@@ -1,0 +1,21 @@
+.search-box {
+    -webkit-appearance: none;
+    border: 2px solid grey;
+    margin: 0 auto;
+    outline: none;
+    padding: 18px 15px;
+    width: 300px;
+    font-size: 1.3rem;
+    border-radius: 5px;
+    line-height: 30px;
+}
+
+.search-box-container {
+    margin: 30px;
+}
+
+@media (max-width: 600px) {
+    .search-box {
+        width: 100%;
+    }
+}

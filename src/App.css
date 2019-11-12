@@ -20,3 +20,13 @@
 .App-link {
   color: #09d3ac;
 }
+
+.App > h1 {
+  color: grey;
+  font-family: 'Yeon Sung', cursive;
+  font-size: 3rem;
+}
+
+.footer {
+  margin: 30px auto;
+}
