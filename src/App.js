@@ -16,7 +16,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch("https://uinames.com/api/?region=india&amount=40&ext")
+    fetch("https://uinames.com/api/?region=india&amount=16&ext")
       .then(response => response.json())
       .then(users => {
         // add unique id to imported users

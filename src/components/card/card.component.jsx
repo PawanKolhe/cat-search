@@ -33,7 +33,7 @@ class Card extends Component {
           <img 
             src={`https://robohash.org/${this.props.character.name}?set=set4&size=180x180`} 
             style={this.state.loading ? {display: 'none'} : {}}
-            onLoad={() => this.setState({loading: false})} 
+            onLoad={() => this.setState({ loading: false })} 
             alt="Cat" 
           />
         </div>
