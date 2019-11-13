@@ -3,11 +3,16 @@
     border: 2px solid grey;
     margin: 0 auto;
     outline: none;
-    padding: 18px 15px;
+    padding: 18px 18px;
     width: 300px;
-    font-size: 1.3rem;
-    border-radius: 5px;
+    font-size: 1.5rem;
+    border-radius: 10px;
     line-height: 30px;
+    font-family: 'PT Sans', cursive;
+}
+
+.search-box::placeholder {
+    color: #7e7e7e;
 }
 
 .search-box-container {

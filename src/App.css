@@ -24,9 +24,27 @@
 .App > h1 {
   color: grey;
   font-family: 'Yeon Sung', cursive;
-  font-size: 3rem;
+  font-size: 3.5rem;
 }
 
 .footer {
   margin: 30px auto;
+  font-family: monospace;
+  font-size: 1.2rem;
+}
+
+.footer a {
+  text-decoration: none;
+  color: black;
+}
+
+.underline:hover {
+  border-bottom: 2px dotted;
+  cursor: pointer;
+}
+
+@media (max-width: 1000px) {
+  .App > h1 {
+    font-size: 3rem;
+  }
 }
