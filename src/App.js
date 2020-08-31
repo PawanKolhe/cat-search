@@ -18,14 +18,14 @@ class App extends Component {
   }
 
   fetchData() {
-    fetch("https://uinames.com/api/?region=india&amount=16&ext")
+    fetch("https://randomuser.me/api/?results=16&inc=name")
       .then(response => response.json())
       .then(users => {
         // add unique id to imported users
         setPrefix("");
-        users = users.map(user => {
+        users = users.results.map(user => {
           user.id = nextId();
-          user.name += " " + user.surname;
+          user.name = user.name.first + " " + user.name.last;
           return user;
         });
         // store users as characters in state
